@@ -12,7 +12,14 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "Server is running",
+    project: "GitHub Profile Analyzer & Repository Insights API",
+    version: "1.0.0",
+    endpoints: {
+      check: "/",
+      analyze: "/api/profiles/analyze/:username",
+      getAllProfiles: "/api/profiles",
+      getSingleProfile: "/api/profiles/:username",
+    },
   });
 });
 

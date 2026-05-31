@@ -185,7 +185,7 @@ GET /api/profiles/octocat
 ### Health Check
 
 ```http
-GET /health
+GET /
 ```
 
 ---

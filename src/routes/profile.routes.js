@@ -9,9 +9,8 @@ import {
 const router = Router();
 
 router.post("/analyze/:username", analyzeProfile);
-
+router.get("/analyze/:username", analyzeProfile);
 router.get("/", getProfiles);
-
 router.get("/:username", getSingleProfile);
 
 export default router;
