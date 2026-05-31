@@ -11,14 +11,19 @@ const githubApi = axios.create({
 export async function fetchGithubProfile(username) {
   try {
     const { data } = await githubApi.get(`/users/${username}`);
-
     return data;
   } catch (error) {
-    if (error.response?.status === 404) {
-      throw new Error("GitHub user not found");
-    }
+    console.error("GitHub Error:", {
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message,
+    });
 
-    throw new Error("Failed to fetch GitHub profile");
+    throw new Error(
+      error.response?.data?.message ||
+      error.message ||
+      "Failed to fetch GitHub profile"
+    );
   }
 }
 
