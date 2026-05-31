@@ -1,0 +1,43 @@
+{
+  "info": {
+    "_postman_id": "1f79571a-96d0-4169-a5c5-e5ea96bae878",
+    "name": "github_profile_analyzer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "35179187",
+    "_collection_link": "https://go.postman.co/collection/35179187-1f79571a-96d0-4169-a5c5-e5ea96bae878?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "check",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "fetch_all_profiles",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "fetch_single_profile",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "fetch_profile",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
