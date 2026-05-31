@@ -20,6 +20,7 @@ export async function connectDB() {
     const connection = await pool.getConnection();
     connection.release();
   } catch (error) {
+    console.error(error.message);
     process.exit(1);
   }
 }
