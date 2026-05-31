@@ -5,24 +5,31 @@ const githubApi = axios.create({
   timeout: 10000,
   headers: {
     Accept: "application/vnd.github+json",
+
+    ...(process.env.GITHUB_TOKEN && {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    }),
   },
 });
 
 export async function fetchGithubProfile(username) {
   try {
     const { data } = await githubApi.get(`/users/${username}`);
+
     return data;
   } catch (error) {
-    console.error("GitHub Error:", {
+    console.error("GitHub Profile Error:", {
       status: error.response?.status,
-      data: error.response?.data,
-      message: error.message,
+      message: error.response?.data?.message,
     });
+
+    if (error.response?.status === 404) {
+      throw new Error("GitHub user not found");
+    }
 
     throw new Error(
       error.response?.data?.message ||
-      error.message ||
-      "Failed to fetch GitHub profile"
+        "Failed to fetch GitHub profile"
     );
   }
 }
@@ -35,6 +42,14 @@ export async function fetchGithubRepos(username) {
 
     return data;
   } catch (error) {
-    throw new Error("Failed to fetch repositories");
+    console.error("GitHub Repos Error:", {
+      status: error.response?.status,
+      message: error.response?.data?.message,
+    });
+
+    throw new Error(
+      error.response?.data?.message ||
+        "Failed to fetch repositories"
+    );
   }
 }
