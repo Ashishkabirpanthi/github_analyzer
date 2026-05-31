@@ -21,3 +21,15 @@ export async function fetchGithubProfile(username) {
     throw new Error("Failed to fetch GitHub profile");
   }
 }
+
+export async function fetchGithubRepos(username) {
+  try {
+    const { data } = await githubApi.get(
+      `/users/${username}/repos?per_page=100`
+    );
+
+    return data;
+  } catch (error) {
+    throw new Error("Failed to fetch repositories");
+  }
+}
